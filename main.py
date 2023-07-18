@@ -14,7 +14,6 @@ This app shows the home prices in Illinois**
 st.write('---')
 
 # load the housing data
-Illinois = pd.read_csv("C:\\Users\\Kevin\\OneDrive\\Desktop\\homes_data.csv")
 x = pd.DataFrame(Illinois, columns=["bathrooms", "bedrooms", "sqr_ft"])
 y = pd.DataFrame(Illinois, columns=["price"])
 
