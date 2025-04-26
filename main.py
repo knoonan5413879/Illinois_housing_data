@@ -37,6 +37,8 @@ y = pd.DataFrame({
               420000, 499000, 639000, 1225000, 1199000, 430000, 999000, 839000, 700000, 795000, 589000,
               1395000, 880000, 769000, 449000, 475000]
 })
+#adds for a 5 percent increase in prices
+y = y * 1.05
 
 # Sidebar input
 st.sidebar.header("Specify Input Parameters")
