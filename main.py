@@ -112,13 +112,14 @@ with tab1:
 
     st.header('Feature Importance')
     plt.title('Feature Importance (SHAP Values)')
-    shap.summary_plot(shap_values, x)
-    st.pyplot(bbox_inches='tight')
+    fig, ax = plt.subplots()
+    shap.summary_plot(shap_values, x, show=False)  # <-- Disable immediate plotting
+    st.pyplot(fig)
     st.write('---')
 
     plt.title('Feature Importance (SHAP Values - Bar Chart)')
-    shap.summary_plot(shap_values, x, plot_type="bar")
-    st.pyplot()
+    shap.summary_plot(shap_values, x, show=False)  # <-- Disable immediate plotting
+    st.pyplot(fig)
     st.write('---')
 
 # --- Tab 2: Affordability Calculator ---
@@ -172,15 +173,15 @@ with tab3:
     # Feature importance summary plot
     st.subheader("SHAP Summary Plot (Scatter)")
     plt.title('Feature Importance (SHAP values)')
-    shap.summary_plot(shap_values, x)
-    st.pyplot(bbox_inches='tight')
+    shap.summary_plot(shap_values, x, show=False)  # <-- Disable immediate plotting
+    st.pyplot(fig)
 
     st.write('---')
 
     st.subheader("SHAP Summary Plot (Bar Chart)")
     plt.title('Feature Importance (Bar Chart)')
-    shap.summary_plot(shap_values, x, plot_type="bar")
-    st.pyplot(bbox_inches='tight')
+    shap.summary_plot(shap_values, x, show=False)  # <-- Disable immediate plotting
+    st.pyplot(fig)
 
     st.write("""
     **How to Read These Charts:**
