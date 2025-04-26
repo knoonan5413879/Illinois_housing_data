@@ -118,7 +118,7 @@ with tab1:
 
     plt.title('Feature Importance (SHAP Values - Bar Chart)')
     shap.summary_plot(shap_values, x, plot_type="bar")
-    st.pyplot(bbox_inches='tight')
+    st.pyplot()
     st.write('---')
 
 # --- Tab 2: Affordability Calculator ---
