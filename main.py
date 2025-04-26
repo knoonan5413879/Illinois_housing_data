@@ -40,6 +40,18 @@ y = pd.DataFrame({
 #adds for a 5 percent increase in prices
 y = y * 1.05
 
+# --- Simulate Quality of Life features correlated with price ---
+import numpy as np
+
+# Normalize prices between 0 and 1
+price_scaled = (y['price'] - y['price'].min()) / (y['price'].max() - y['price'].min())
+
+# Create simulated quality scores
+np.random.seed(42)  # for reproducibility
+x['school_rating'] = (6 + 4 * price_scaled + np.random.normal(0, 0.5, size=len(x))).clip(1, 10).round()
+x['safety_rating'] = (5 + 5 * price_scaled + np.random.normal(0, 0.7, size=len(x))).clip(1, 10).round()
+x['restaurant_score'] = (5 + 4.5 * price_scaled + np.random.normal(0, 0.3, size=len(x))).clip(1, 10).round(1)
+
 # Sidebar input
 st.sidebar.header("Specify Input Parameters")
 def user_input_features():
