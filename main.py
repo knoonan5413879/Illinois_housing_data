@@ -58,8 +58,22 @@ def user_input_features():
     bedrooms = st.sidebar.slider('Bedrooms', x.bedrooms.min(), x.bedrooms.max(), int(x.bedrooms.mean()))
     bathrooms = st.sidebar.slider('Bathrooms', x.bathrooms.min(), x.bathrooms.max(), int(x.bathrooms.mean()))
     sqr_ft = st.sidebar.slider('Square Footage', x.sqr_ft.min(), x.sqr_ft.max(), int(x.sqr_ft.mean()))
-    data = {'bedrooms': bedrooms, 'bathrooms': bathrooms, 'sqr_ft': sqr_ft}
-    return pd.DataFrame(data, index=[0])
+    
+    school_rating = st.sidebar.slider('School Rating (1-10)', 1, 10, 7)
+    safety_rating = st.sidebar.slider('Safety Rating (1-10)', 1, 10, 7)
+    restaurant_score = st.sidebar.slider('Proximity to Restaurants (1-10)', 1, 10, 7)
+
+    data = {
+        'bedrooms': bedrooms,
+        'bathrooms': bathrooms,
+        'sqr_ft': sqr_ft,
+        'school_rating': school_rating,
+        'safety_rating': safety_rating,
+        'restaurant_score': restaurant_score
+    }
+    features = pd.DataFrame(data, index=[0])
+    return features
+
 
 df = user_input_features()
 
