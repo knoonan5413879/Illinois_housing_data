@@ -93,7 +93,8 @@ def calculate_monthly_payment(loan_amount, annual_interest_rate, loan_term_years
     return monthly_payment
 
 # Tabs
-tab1, tab2 = st.tabs(["🏠 House Price Prediction", "💵 Affordability Calculator"])
+tab1, tab2, tab3 = st.tabs(["🏠 House Price Prediction", "💵 Affordability Calculator", "📊 Feature Impact"])
+
 
 # --- Tab 1: House Price Prediction ---
 with tab1:
@@ -160,6 +161,35 @@ with tab2:
     _Note: These estimates do not include HOA fees, maintenance costs, or other potential costs._
     """)
     st.write('---')
+
+with tab3:
+    st.header('Feature Impact on House Price')
+
+    # Explain model predictions using SHAP
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(x)
+
+    # Feature importance summary plot
+    st.subheader("SHAP Summary Plot (Scatter)")
+    plt.title('Feature Importance (SHAP values)')
+    shap.summary_plot(shap_values, x)
+    st.pyplot(bbox_inches='tight')
+
+    st.write('---')
+
+    st.subheader("SHAP Summary Plot (Bar Chart)")
+    plt.title('Feature Importance (Bar Chart)')
+    shap.summary_plot(shap_values, x, plot_type="bar")
+    st.pyplot(bbox_inches='tight')
+
+    st.write("""
+    **How to Read These Charts:**
+    - Higher SHAP values = bigger effect on price
+    - Positive SHAP value = pushes price UP
+    - Negative SHAP value = pushes price DOWN
+    - Longer bars = more important feature
+    """)
+
 
 
 
