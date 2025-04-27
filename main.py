@@ -50,7 +50,7 @@ price_scaled = (y['price'] - y['price'].min()) / (y['price'].max() - y['price'].
 np.random.seed(42)  # for reproducibility
 x['school_rating'] = (6 + 4 * price_scaled + np.random.normal(0, 0.5, size=len(x))).clip(1, 10).round()
 x['safety_rating'] = (5 + 5 * price_scaled + np.random.normal(0, 0.7, size=len(x))).clip(1, 10).round()
-x['restaurant_score'] = (5 + 4.5 * price_scaled + np.random.normal(0, 0.3, size=len(x))).clip(1, 10).round(1)
+x['restaurant_score'] = (5 + 1.5 * price_scaled + np.random.normal(0, 0.3, size=len(x))).clip(1, 10).round(1)
 
 # Sidebar input
 st.sidebar.header("Specify Input Parameters")
